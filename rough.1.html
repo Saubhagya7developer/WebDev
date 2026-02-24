@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dimension</title>
+        <style>
+            /* Reset and Base Styles */
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background: linear-gradient(135deg, #0f0c29, #3b0202, #2c001a);
+                color: #e0e0e0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            /* Typography */
+            h1 {
+                color: #ffffff;
+                font-size: 4rem;
+                letter-spacing: 5px;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                margin-bottom: 20px;
+                opacity: 0;
+                animation: fadeInDown 1s ease-out forwards;
+            }
+
+            p {
+                font-size: 1.2rem;
+                max-width: 600px;
+                line-height: 1.6;
+                margin-bottom: 15px;
+                color: #ccc;
+                opacity: 0;
+                animation: fadeInUp 1s ease-out 0.5s forwards;
+            }
+
+            /* Image Styling */
+            img {
+                height: 250px;
+                width: auto;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                margin-bottom: 30px;
+                transition: transform 0.3s ease;
+                opacity: 0;
+                animation: zoomIn 1s ease-out 0.2s forwards;
+            }
+
+            img:hover {
+                transform: scale(1.05);
+            }
+
+            /* Button Styling */
+            .cta-button {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 15px 40px;
+                background: linear-gradient(90deg, #ff416c, #ff4b2b);
+                color: white;
+                text-decoration: none;
+                font-size: 1.2rem;
+                font-weight: bold;
+                border-radius: 30px;
+                box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+                transition: all 0.3s ease;
+                opacity: 0;
+                animation: fadeInUp 1s ease-out 0.8s forwards;
+            }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(255, 75, 43, 0.6);
+                background: linear-gradient(90deg, #ff4b2b, #ff416c);
+            }
+
+            /* Animations */
+            @keyframes fadeInDown {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            @keyframes zoomIn {
+                from { opacity: 0; transform: scale(0.5); }
+                to { opacity: 1; transform: scale(1); }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>DIMENSION</h1>
+
+        <img src="Media\Images\logo.png" alt="Dimension Company Logo">
+
+        <p>Dimension: A company focused on creating visuals that impact us to carve our own path.</p>
+        <p>If you want to be a part of this journey, join us below.</p>
+
+        <a href="https://feline-allium-9e7.notion.site/Dimension-197db24b861b80c285fae9bdc20585a7?pvs=74" target="_blank" class="cta-button" id="joinBtn">
+            Join Now
+        </a>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const button = document.getElementById('joinBtn');
+                const title = document.querySelector('h1');
+
+                // Interactive Title Effect (Parallax on mouse move)
+                document.addEventListener('mousemove', (e) => {
+                    const x = (window.innerWidth - e.pageX) / 50;
+                    const y = (window.innerHeight - e.pageY) / 50;
+                    title.style.transform = `translate(${x}px, ${y}px)`;
+                });
+
+                // Button click feedback
+                button.addEventListener('click', () => {
+                    button.textContent = "Redirecting...";
+                    setTimeout(() => {
+                        button.textContent = "Join Now";
+                    }, 3000);
+                });
+            });
+        </script>
+    </body>
+</html>
